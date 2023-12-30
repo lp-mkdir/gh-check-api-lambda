@@ -1,4 +1,4 @@
 export default function dummy() {
-  // do nothing 123
+  // trigger 1
   return null;
 }
