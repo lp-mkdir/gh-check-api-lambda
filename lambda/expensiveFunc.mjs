@@ -22,7 +22,8 @@ export async function handler(event) {
         // Add same for the github status check rules
         event_type: 'lambda-test-results', // Must match the event type in the workflow file
         client_payload: {
-            prNumber
+            prNumber,
+            results: "data"
         }
     };
 
