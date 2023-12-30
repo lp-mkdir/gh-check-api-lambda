@@ -1,4 +1,4 @@
 export default function dummy() {
-  // ship it w/firee..
+  // noop
   return null;
 }
