@@ -13,6 +13,4 @@ jobs:
 
     - name: Process Results
       run: |
-        echo "Event Type: ${{ github.event.action }}"
         echo "Test Results: ${{ github.event.client_payload.results }}"
-
