@@ -18,19 +18,11 @@ jobs:
              "https://api.github.com/repos/${{ github.repository }}/statuses/$COMMIT_SHA" \
              -d '{"state": "pending", "context": "ci-workflow", "description": "Waiting for remote checks..."}'
 
-  check-lambda:
+  trigger-lambda:
     needs: set-pending-status
     runs-on: ubuntu-latest
     steps:
-    - name: Check Lambda Function
+    - name: Trigger Lambda Function
       run: |
-        response=$(curl -s "https://mjz5hfy5zxd3exs6lfavnwapbu0kqywr.lambda-url.eu-north-1.on.aws/")
-        echo "Lambda Response: $response"
-        test_status=$(echo $response | jq -r '.data.results.cypress')
-        if [ "$test_status" = "failed" ]; then
-          echo "E2E tests failed"
-          exit 1
-        else
-          echo "E2E tests passed"
-        fi
-
+        curl -X POST -m 10 "https://mjz5hfy5zxd3exs6lfavnwapbu0kqywr.lambda-url.eu-north-1.on.aws/" \
+             -d '{"trigger": "start e2e tests", "pr_id": "${{ github.event.pull_request.number }}"}' &
