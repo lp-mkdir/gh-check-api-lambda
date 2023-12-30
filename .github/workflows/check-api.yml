@@ -24,5 +24,5 @@ jobs:
     steps:
     - name: Trigger Lambda Function
       run: |
-        curl -X POST "https://mjz5hfy5zxd3exs6lfavnwapbu0kqywr.lambda-url.eu-north-1.on.aws/" \
-             -d '{"trigger": "start e2e tests", "pr_id": "${{ github.event.pull_request.number }}"}'
+        curl -X POST -m 10 "https://mjz5hfy5zxd3exs6lfavnwapbu0kqywr.lambda-url.eu-north-1.on.aws/" \
+             -d '{"trigger": "start e2e tests", "pr_id": "${{ github.event.pull_request.number }}"}' &
