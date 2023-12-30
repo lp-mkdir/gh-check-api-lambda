@@ -27,4 +27,4 @@ jobs:
         curl -X POST -m 10 \
              -H "Content-Type: application/json" \
              -d '{"trigger": "start e2e tests", "pr_id": "${{ github.event.pull_request.number }}"}' \
-             "https://qjs7beeffbzgyqarlx3if22pei0ujuuu.lambda-url.eu-north-1.on.aws"
+             "https://jt5s2dl67pvczj5kbh4iphwvc40skjzt.lambda-url.eu-north-1.on.aws/"
