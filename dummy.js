@@ -1,4 +1,4 @@
 export default function dummy() {
-  // test
+  // hit me
   return null;
 }
